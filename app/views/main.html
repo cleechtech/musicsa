@@ -1,0 +1,10 @@
+<div class='row' id='welcome'></div>
+
+<div class='row' id='petitions'>
+	<div class='col-sm-offset-6 spinner' spinner="viewLoading"></div>
+
+	<div ng-repeat='(petitionId, petition) in petitions' class='col-md-4 col-sm-6 text-center'>
+		<h3><a ng-href='#/petitions/{{ petitionId }}'>{{ petition.action }}</a></h3>
+		<p>{{ petition.petitioning }}</p>
+	</div>
+</div>

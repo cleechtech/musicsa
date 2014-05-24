@@ -1,0 +1,11 @@
+<input type='text' placeholder='Search for music' class='form-control' ng-model='searchterm' ng-change='search(searchterm)'>
+
+<h3 ng-show='searchterm'>{{ results.artists.totalItems }} results</h3>
+<div class='row'>
+		<div class='col-md-4' ng-repeat='artist in results.artists.artist | orderBy:popularity'>
+			<div class='container'>
+				<img ng-src='{{artist.image}}'>
+			</div>
+			<h4><a ng-href='#/artists/{{ artist.id }}'>{{ artist.name }}</a></h4>
+		</div>
+</div>

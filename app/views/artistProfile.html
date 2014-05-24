@@ -1,0 +1,13 @@
+<div class='row' ng-include="'views/templates/breadcrumbs.html'"></div>
+
+<div class='row'>
+	<h2>Artist profile</h2>
+
+	<h3>{{topTracks.tracks.totalItems}} tracks</h3>
+	<ul>
+		<li ng-repeat='track in topTracks.tracks.track'><a ng-href='#/tracks/{{track.id}}'>{{ track.title }}</a></li>
+	</ul>
+</div>
+
+<!-- JSON for dev -->
+<pre>{{topTracks.tracks.track | json}}</pre>

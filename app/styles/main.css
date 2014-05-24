@@ -1,0 +1,81 @@
+body {
+  background: #F3F3F3;
+}
+
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+#welcome {
+  height: 400px;
+  background: url('../images/headphones.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size:100% auto;
+}
+
+#welcome div:first-child {
+  color: #F3F3F3;
+  background-color: #000000;
+  height: 250px;
+}
+
+.spinner {
+  margin-top: 30px;
+}
+
+/* NAV BAR */
+.navbar {
+  margin-bottom: 0px;
+}
+
+.nav-pic {
+  margin: -2px 5px 0 0;
+  max-height: 20px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-radius: 100px;
+}
+
+/* File upload */
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+/* styles for xs (< 768px) */
+@media (max-width: 768px) {
+  #welcome {
+    background-size: 768px;
+  }
+
+  #welcome div:first-child {
+    color: #000000;
+    /* TRANSPARENT BACKGROUND */
+     /* Fallback for web browsers that don't support RGBa */
+    background-color: rgb(0, 0, 0);
+    /* RGBa with 0 opacity */
+    background-color: rgba(0, 0, 0, 0);
+    /* For IE 5.5 - 7*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+    /* For IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+  }
+}

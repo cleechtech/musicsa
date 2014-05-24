@@ -1,0 +1,35 @@
+<div class='row'>
+	<div class='col-sm-offset-6 spinner' spinner="viewLoading"></div>
+	<div class='text-center'>
+		<h2>{{ petition.action }}</h2>
+		{{ petition.petitioning }}
+		{{ petition.description }}
+	</div>
+
+	<div ng-show='petition.comments'>
+		<h4>Comments</h4>
+		<div ng-repeat='(commentId, comment) in petition.comments'>
+			<div class='col-sm-12'>
+				<p>{{ comment.text }}</p>
+				<p>posted by <a ng-href='#/users/{{ comment.username }}'>{{ comment.username }}</a></p>
+				(<a ng-click='removeComment(comment, commentId)' ng-show='signedIn() && comment.username === currentUser.username'>delete comment</a>)
+			</div>
+		</div>
+	</div>
+
+	<div ng-hide='signedIn()'>
+		<p>
+			<a ng-href='#/login' class='btn btn-success'>Sign in</a> or <a href='#/register' class='btn btn-default'>Sign up</a> to post a comment
+		</p>
+	</div>
+
+	<div ng-show='signedIn()'>
+		<h4>Add a comment to this petition</h4>
+		<form>
+			<textarea ng-model='comment.text' class='form-control' placeholder='Enter your comment'></textarea>
+
+			<input type='submit' class='btn btn-primary' ng-click='addComment()' value='Post comment'>
+		</form>
+	</div>
+
+</div>

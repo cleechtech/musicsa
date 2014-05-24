@@ -1,0 +1,15 @@
+<div class='row'>
+	<div class='col-sm-6 auth-forms'>
+		<h2>Register</h2>
+
+		<div class='col-sm-offset-6 spinner' spinner="viewLoading"></div>
+		
+		<form ng-submit='register()'>
+			<p ng-show="error" class="text-danger">{{ error }}</p>
+			<input type="email" ng-model="user.email" placeholder="Email" class="form-control"><br>
+			<input type="text" ng-model="user.username" placeholder="Username" class="form-control"><br>
+    		<input type="password" ng-model="user.password" placeholder="Password" class="form-control"><br>
+    		<input type="submit" value="Register" class="btn btn-primary" />
+		</form>
+	</div>
+</div>

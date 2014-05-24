@@ -1,0 +1,45 @@
+<div class='row'>
+	<div class='col-sm-offset-1 col-sm-7 text-center'>
+		<h2>Start a petition</h2>
+		<form ng-submit='submitPetition()'>
+			<input type='text' class='form-control' placeholder='Who are you petitioning?' ng-model='petition.petitioning'>
+			<input type='text' class='form-control' placeholder='What do you want them to do?' ng-model='petition.action'>
+			<textarea type='text' class='form-control' placeholder='Why is this important?' ng-model='petition.description'></textarea>
+    		<label for='image'>Image:</label>
+    		<input type="file" name="image" ng-model='petition.image'>
+    		<p class="help-block">Upload an image for your petition</p>
+    		<!-- only show submit button if user is logged in -->
+			<input type='submit' class='btn btn-success' value='Add petition' ng-show='signedIn()'>
+		</form>
+		<!-- login/sign up options if user isn't authenticated -->
+		<div ng-hide='signedIn()' class='text-center'>
+			<a class='btn btn-success' ng-click='showForm("register")'>Register</a> or <a class='btn btn-primary' ng-click='showForm("login")'>Login</a>
+
+			<div ng-show='register'>
+				<h3>Register</h3>
+				<form ng-submit='register()' ng-controller='AuthCtrl'>
+					<p ng-show="error" class="text-danger">{{ error }}</p>
+					<input type="email" ng-model="user.email" placeholder="Email" class="form-control">
+					<input type="text" ng-model="user.username" placeholder="Username" class="form-control">
+		    		<input type="password" ng-model="user.password" placeholder="Password" class="form-control">
+		    		<input type="submit" value="Register" class="btn btn-primary" />
+				</form>
+			</div>
+			<div ng-show='login'>
+				<h3>Login</h3>
+				<form ng-submit='login()' ng-controller='AuthCtrl'>
+					<p ng-show="error" class="text-danger">{{ error }}</p>
+					<input type="email" ng-model="user.email" placeholder="Email" class="form-control">
+		    		<input type="password" ng-model="user.password" placeholder="Password" class="form-control">
+		    		<input type="submit" value="Login" class="btn btn-primary" />
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class='col-sm-4'>
+		<h3 class='text-center'>Preview</h3>
+		<pre>
+		{{ petition | json }}
+		</pre>
+	</div>
+</div>
