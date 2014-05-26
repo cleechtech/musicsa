@@ -3,7 +3,18 @@
 <div class='row'>
 	<h1>{{ track.title }} <span class='text-muted'>by {{ track.artist.name }}</span></h1>
 
-	<div class='btn btn-primary'>Listen</div>
-
 	<div class='btn btn-primary'>Buy</div>
+	<div class='btn btn-default' ng-click='streamTrack()'>Practice stream</div>
 </div>
+
+<div class='row'>
+	<!-- TODO: make sure the track is able to be streamed in user's country -->	
+	<h4>Listen here</h4>
+	<audio controls>
+		<source ng-src="{{track.streamingSourceThing}}" type="audio/mpeg">
+		Your browser doesn't support the html5 audio tag
+	</audio>
+</div>
+
+
+<pre>{{ track | json }}</pre>

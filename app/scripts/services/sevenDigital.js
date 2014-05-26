@@ -4,6 +4,8 @@ app.factory('SD', ["$http", "$q", 'SD_BASE', 'SD_KEY', function($http, $q, SD_BA
 
 	// TODO: all these $http requests are the same. Abstract away!!
 
+	var streamBase = 'https://stream.svc.7digital.net'
+
 	return {
 		artistTopTracks: function(artistId){
 			var dfd = $q.defer()
@@ -77,7 +79,11 @@ app.factory('SD', ["$http", "$q", 'SD_BASE', 'SD_KEY', function($http, $q, SD_BA
 				dfd.reject(err)
 			})
 			return dfd.promise;
+		},
+		stream: function(trackDetails){
+			var params = angular.extend(trackDetails, { oauth_consumer_key: SD_KEY })
+
+			$http.get(streamBase + '/stream/catalogue', params)
 		}
 	}
-
 }])
