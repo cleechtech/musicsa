@@ -1,7 +1,6 @@
 'use strict';
 
-app.controller('AuthCtrl',
-  function($scope, $location, Auth, User){
+app.controller('AuthCtrl', function($scope, $location, Auth, User){
     $scope.viewLoading = false;
 
     $scope.$on('$firebaseSimpleLogin:login', function(){

@@ -1,10 +1,5 @@
-<div class='row' id='welcome'></div>
-
-<div class='row' id='petitions'>
-	<div class='col-sm-offset-6 spinner' spinner="viewLoading"></div>
-
-	<div ng-repeat='(petitionId, petition) in petitions' class='col-md-4 col-sm-6 text-center'>
-		<h3><a ng-href='#/petitions/{{ petitionId }}'>{{ petition.action }}</a></h3>
-		<p>{{ petition.petitioning }}</p>
-	</div>
+<div class='text-center'>
+<h3>What do you want to do?</h3>
+<a ui-sref='u-register.basic' class='btn btn-danger'>I want to buy music</a>
+<a ui-sref='a-register.basic' class='btn btn-primary'>I want to sell music</a>
 </div>
