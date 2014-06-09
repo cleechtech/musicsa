@@ -7,7 +7,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>musicsa</title>
-    <meta name="description" content="">
+
+    <!-- necessary for angular html5mode -->
+    <base href="/">
+
+    <meta name="description" content="music south africa download mp3">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css styles/vendor.css -->
@@ -67,11 +71,12 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
 
-        <script src='scripts/services/auth.js'></script>
-        <script src='scripts/services/user.js'></script>
+        <script src='scripts/services/Auth.js'></script>
+        <script src='scripts/services/User.js'></script>
+        <script src='scripts/services/Artist.js'></script>
 
         <script src='scripts/controllers/nav.js'></script>
-        <script src='scripts/controllers/auth.js'></script>
+        <script src='scripts/controllers/login.js'></script>
         <script src='scripts/controllers/registerArtist.js'></script>
         <script src='scripts/controllers/registerUser.js'></script>
         <script src='scripts/controllers/artistProfile.js'></script>

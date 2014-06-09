@@ -3,20 +3,23 @@
 app.controller('RegisterUserCtrl', ['$scope', "$location", "Auth", "User", function($scope, $location, Auth, User){
 	$scope.viewLoading = false;
 
-	// holds all form data
 	$scope.formData = {}
 
-	 $scope.addUser = function(formData){
-      $scope.viewLoading = true;
-      
-      // authenticate user
-      Auth.register(formData).then(function(authUser){
-        Auth.login(formData)
-        // create user
-      	User.create(authUser, formData.username)
-      	$location.path('/')
-      }, function (error) {
-        $scope.error = error.toString();
-      });
-    };
+  $scope.addUser = function(){
+    $scope.viewLoading = true;
+    
+    // create new auth creds for user
+    Auth.register($scope.formData).then(function(authUser){
+      // log user in with their creds
+      Auth.login($scope.formData)
+
+      // create user object in database
+      User.create(authUser, $scope.formData)
+
+      // redirect
+      $location.path('/');
+    }, function (error) {
+      $scope.error = error.toString();
+    })
+  }
 }])

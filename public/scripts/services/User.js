@@ -6,18 +6,20 @@ app.factory('User', ["$rootScope", "Auth", "$firebase", "FIREBASE_URL", function
 	var users = $firebase(ref);	// firebase 'users' collection
 	
 	var User = {
-		create: function(authUser, userData){
-			users[userData.username] = {
+		create: function(authUser, formData){
+			users[formData.username] = {
 				md5_hash: authUser.md5_hash,
-				name: userData.name,
-				username: userData.username,
-				email: userData.email,
+				name: formData.name,
+				email: formData.email,
+				cardNum: formData.cardNum,
+				bank: formData.bank,
+				username: formData.username,
 				$priority: authUser.uid	// unique way of finding a user (firebase)
 			};
 			
-			users.$save(userData.username)	// save to database
+			users.$save(formData.username)	// save to database
 				.then(function(){
-					setCurrentUser(userData.username)
+					setCurrentUser(formData.username)
 				});	
 		},
 		findByUsername: function(username){

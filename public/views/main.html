@@ -1,5 +1,11 @@
 <div class='text-center'>
-<h3>What do you want to do?</h3>
-<a ui-sref='u-register.basic' class='btn btn-danger'>I want to buy music</a>
-<a ui-sref='a-register.basic' class='btn btn-primary'>I want to sell music</a>
+	<div ng-hide='signedIn()'>
+		<h3>What do you want to do?</h3>
+		<a ui-sref='u-register.basic' class='btn btn-danger'>I want to buy music</a>
+		<a ui-sref='a-register.basic' class='btn btn-primary'>I want to sell music</a>
+	</div>
+	<div ng-show='signedIn()'>
+		<h3>Welcome!</h3>
+		<pre>{{ currentUser }}</pre>
+	</div>
 </div>

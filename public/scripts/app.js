@@ -9,7 +9,10 @@ var app = angular.module('musicsa', [
   'firebase'
 ]) 
 
-app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', "$locationProvider", function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    // remove # from url
+    $locationProvider.html5Mode(true).hashPrefix('!')
+    
     $stateProvider
       .state('home', {
         url: '/',
@@ -58,7 +61,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $u
       .state('login', {
         url: '/login',
         templateUrl: 'views/login.html',
-        controller: 'AuthCtrl'
+        controller: 'LoginCtrl'
       })
 
       // catch all route

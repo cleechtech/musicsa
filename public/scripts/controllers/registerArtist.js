@@ -1,16 +1,27 @@
 'use strict'
 
-app.controller('RegisterArtistCtrl', ['$scope', function($scope){
+app.controller('RegisterArtistCtrl', ['$scope', "$location", "Auth", "Artist", function($scope, $location, Auth, Artist){
+	$scope.viewLoading = false;
 
-	// holds all form data
 	$scope.formData = {}
 
 	$scope.addArtist = function(){
-		// create account
+		$scope.viewLoading = true;
 
-		// log artist in
+		// create new auth creds for artist
+		Auth.register($scope.formData).then(function(authUser){
+			console.log('authUser: ' + authUser)
+		  // log artist in with their creds
+		  Auth.login($scope.formData)
 
-		// redirect to homepage
+		  // create artist object in database
+		  Artist.create(authUser, $scope.formData)
 
+		  // redirect
+		  $location.path('/');
+		}, function (error) {
+			console.log('error!! ' + error)
+		  $scope.error = error.toString();
+		})
 	}
 }])

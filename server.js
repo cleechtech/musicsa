@@ -6,11 +6,14 @@ var express = require('express'),
 
 // EXPRESS CONFIG
 app.use(bodyParser())
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, '/public')));
 
 // ENVIRONMENT CONFIG
-var mode = 'development'
-// var env = require('./server/config/environment')[mode]
+// var mode = 'development'
+// // var env = require('./server/config/environment')[mode]
+
+// S3 config
+require('./server/config/s3')()
 
 // ROUTES
 require('./server/config/routes')(app)
