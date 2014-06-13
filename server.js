@@ -5,7 +5,7 @@ var express = require('express'),
     port = process.env.PORT || 3000;
 
 // EXPRESS CONFIG
-app.use(bodyParser())
+app.use(bodyParser())	// populates req.body with (among other things) the value of the POST parameters
 app.use(express.static(path.join(__dirname, '/public')));
 
 // ENVIRONMENT CONFIG
